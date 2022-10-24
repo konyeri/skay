@@ -1,0 +1,30 @@
+{% extends 'Meetup_app/main.html'%}
+{% block title %}Meetup App {%endblock%}
+{%block upcoming%}{%endblock%}
+{%block view%}{%endblock%}
+{%block meetup%}
+<div class="container-fluid bg-light py-5 px-3">
+    <div class="row justify-content-center">
+       <div class="col-md-6">
+        <h2>Registration Form</h2>
+
+        <form method="POST" action="" enctype="multipart/form-data">
+            {%csrf_token%}
+            <p>
+        
+                {{form.as_p}}
+            </p>
+        
+        
+            <button> Register</button>
+        
+        
+        </form>
+        <p>Already registered?<a>Login</a></p>
+       
+       </div>
+    </div>
+  
+    </div>
+    
+{%endblock%}

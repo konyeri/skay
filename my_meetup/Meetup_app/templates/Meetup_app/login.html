@@ -1,0 +1,23 @@
+{% extends 'Meetup_app/main.html'%}
+{% block title %}Meetup App {%endblock%}
+{%block upcoming%}{%endblock%}
+{%block view%}{%endblock%}
+{%block meetup%}
+<div class="container-fluid bg-light py-5 px-3">
+    <div class="row justify-content-center">
+       <div class="col-md-4">
+        <h1>Login Page</h1>
+        <form method="POST" action="">
+        {%csrf_token%}
+        <label class="label-control">Email</label>
+        <input class="form-control" name="email" type="email" placeholder="Your email" required><br>
+        <label class="label-control">Password</label>
+        <input class="form-control" name="password" type="password" placeholder="password" ></br>
+        <button type="submit" class="btn btn-outline-warning">Login</button>
+        
+        </form>
+    </div>
+</div>
+    </div>
+    
+{%endblock%}

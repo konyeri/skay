@@ -1,0 +1,94 @@
+<html>
+<head>
+
+    <title>Home</title>
+</head>
+<body>
+    {% if request.user.is_authenticated%}
+    <p>Welcome! {{request.user.username}}</p>
+    <hr>
+    <p><a href="{% url 'logout'%}">Logout</a> </p>
+    {%else%}
+    <span><a href="{%url 'login'%}" >Login</a></span>
+    <span><a href="{% url 'register' %}"> Register</a></span>
+    {%endif%}
+
+    <h1>Welcome to meetups App</h1>
+    {%if request.user.is_authenticated%}
+    <h3><a href="{% url 'create-meetup'%}">Add Meetups</a></h3><br>
+    <h3><a href="{% url 'user-meetups' request.user.id %}">User Meetups</a></h3><br>
+    <hr>
+    {%endif%}
+    <form method="GET" action="">
+        {%csrf_token%}
+        <input type="text" name="q" placeholder="search" required/>
+        <input type="submit" value="search"/>
+
+
+    </form>
+    <span><a href="{%url 'home'%}">All</a></span>
+    <span><a href="{%url 'upcoming-meetups'%}">Upcoming  Meetups</a></span>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Organizer Email</th>
+            <th>Description</th>
+            
+            <th>View</th>
+  
+
+        </tr>
+        {% for meetup in meetups %}
+        <tr>
+            <td>{{meetup.title}}</td>
+            <td>{{meetup.organizer_email}}</td>
+            <td>{{meetup.description}}</td>
+            
+            <td> <a href="{% url 'meetup-details'  meetup.slug%}" target="_new">View</a></td>
+            
+        </tr>
+        {%endfor%}
+
+
+    </table>
+    <p>Number of meetups : {{count}}</p>
+
+    
+</body>
+
+</html>
+</div>
+<div class="col-lg-3 col-md-6 mb-5">
+    <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
+    <div class="m-n1">
+        <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Entertainment</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Travel</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Lifestyle</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Politics</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Corporate</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Health</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Education</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Science</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Business</a>
+        <a href="" class="btn btn-sm btn-secondary m-1">Foods</a>
+    </div>
+    <h6 class="mt-4 mb-3 text-white text-uppercase font-weight-bold">Follow Us</h6>
+    <div class="d-flex justify-content-start">
+        <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+        <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a class="btn btn-lg btn-secondary btn-lg-square mr-2" href="#"><i class="fab fa-instagram"></i></a>
+        <a class="btn btn-lg btn-secondary btn-lg-square" href="#"><i class="fab fa-youtube"></i></a>
+    </div>

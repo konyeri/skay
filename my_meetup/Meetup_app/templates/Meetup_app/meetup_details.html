@@ -1,0 +1,32 @@
+{% extends 'Meetup_app/main.html'%}
+{% block title %}Meetup App {%endblock%}
+{%block upcoming%}{%endblock%}
+{%block view%}{%endblock%}
+{%block meetup%}
+<div class="container-fluid bg-light py-5 px-3">
+    <div class="row ">
+       <div class="col-md-4">
+        <img src={{meetup.image.url}} style="width:80%; " alt=""/>
+
+       </div>
+     <div class="col-md-8 ">
+        <h2>{{meetup.title}}</h2>
+        <p>{{meetup.description}}</p>
+        <hr>
+        <b><p>Location: {{meetup.location_name}}</p></b>
+        <strong><span>Time: {{meetup.meetup_time}}</span></strong>
+
+        <b><p>Date :  {{meetup.from_date}}-{{meetup.to_date}}</p></b>
+        <h3 class="text-warning">Join Us</h3>
+        <form  method="POST" action="" >
+            {%csrf_token%}
+            {{form.as_p}}
+        
+        <button class="btn btn-outline-primary"> Join Us</button>
+        </form>
+       </div>
+    </div>
+  
+    </div>
+    
+{%endblock%}

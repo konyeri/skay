@@ -1,0 +1,33 @@
+{% extends 'Meetup_app/main.html'%}
+{% block title %}Meetup App {%endblock%}
+
+{%block meetup%}
+<div class="container-fluid bg-light py-5">
+    <div class="row ">
+        {% for meetup in meetups %}
+        <div class="col-md-4 col-lg-4  my-1">
+               <div class="card">
+                    <img src= "{{meetup.image.url}}" style="height: 350px; object-fit:cover" class="card-img-top" alt="mettp-image"/>
+           
+            <div class="card-body">
+                <div class="card-title">
+    
+                   <h4>{{meetup.title | truncatewords:3}}</h4> 
+                </div>
+                <div class="card-sub-title">
+                    <span>Date: {{meetup.from_date}} -  {{meetup.to_date}}</span>
+                    <p>Created : {{meetup.create |timesince}} ago</p>
+                    
+                    <p> {{meetup.description | truncatewords:4}}</p>
+                </div>
+            </div>
+            <a href="{% url 'meetup-details'  meetup.slug%}" target="_new" class="btn btn-outline-primary">View</a>
+        </div>
+    </div>
+        {%endfor%}
+    
+    </div>
+    
+    </div>
+    
+{%endblock%}
